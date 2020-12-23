@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="AppTheme" parent="Base.AppTheme" />
+
+    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+
+        <item name="toolbarStyle">@style/Widget.PagSeguro.Toolbar</item>
+        <item name="materialButtonStyle">@style/Widget.PagSeguro.MaterialButton</item>
+    </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/background_launcher</item>
+    </style>
+
+    <style name="ThemeOverlay.PagSeguro.Light" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="AppTheme.PopupTheme" parent="ThemeOverlay.PagSeguro.Light" />
+
+</resources>

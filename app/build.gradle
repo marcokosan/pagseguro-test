@@ -1,0 +1,137 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.marcokosan.pagseguro"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures.viewBinding true
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            versionNameSuffix = '-debug'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    def API_BASE_URL = "API_BASE_URL"
+
+    flavorDimensions "server", "connectivity"
+
+    productFlavors {
+        remote {
+            dimension 'connectivity'
+        }
+        mock {
+            dimension 'connectivity'
+        }
+
+        production {
+            dimension 'server'
+            buildConfigField "String", API_BASE_URL, '"https://api.punkapi.com/v2/"'
+        }
+        develop {
+            dimension 'server'
+            applicationIdSuffix ".development"
+            buildConfigField "String", API_BASE_URL, '"https://api.punkapi.com/v2/"'
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../debug.keystore")
+            keyAlias "pagsegurotest"
+            keyPassword "123456"
+            storePassword "123456"
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/java"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/java"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation "androidx.multidex:multidex:$multidex_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$core_version"
+
+    // Java 8 language features
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugar_jdk_version"
+
+    // UI
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation "androidx.activity:activity-ktx:$activity_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+    implementation "com.google.android.material:material:$material_version"
+
+    // Third party
+    implementation "com.jakewharton.timber:timber:$timber_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation ("com.squareup.okhttp3:okhttp") {
+        version { strictly "$okhttp_version"}
+    }
+    implementation ("com.squareup.okhttp3:logging-interceptor") {
+        version { strictly "$okhttp_version"}
+    }
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Local unit tests
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "androidx.arch.core:core-testing:$test_arch_core_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    // Android unit tests
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+    // Android instrumented testing
+    androidTestImplementation "androidx.test.ext:junit:$test_ext_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$expresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$expresso_version"
+}

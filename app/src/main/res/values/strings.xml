@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">Teste PagSeguro</string>
+
+    <string name="title_home">@string/app_name</string>
+    <string name="title_beer_datails">Detalhes</string>
+
+    <string name="close">Fechar</string>
+    <string name="dismiss">Dispensar</string>
+    <string name="try_again">Tentar novamente</string>
+
+    <string name="generic_error_message">Ocorreu um erro.\nPor favor, tente novamente mais tarde.</string>
+    <string name="dialog_no_connection_title">Sem conexão</string>
+    <string name="dialog_no_connection_message">Você está off-line. Verifique sua conexão e tente novamente.</string>
+
+    <!-- Home -->
+    <string name="home_beer_image_content_description">Imagem da cerveja</string>
+
+    <!-- Beer Detail -->
+    <string name="detail_abv">Teor alcoólico:</string>
+    <string name="detail_ibu">Escala de amargor:</string>
+    <string name="detail_tagline">Slogan:</string>
+    <string name="detail_description">Descrição:</string>
+
+</resources>
