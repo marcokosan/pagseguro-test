@@ -5,4 +5,6 @@
     <color name="color_primary_dark">#418337</color>
     <color name="color_accent">#C4FFA9</color>
 
+    <color name="ic_launcher_background">@color/color_primary</color>
+
 </resources>
