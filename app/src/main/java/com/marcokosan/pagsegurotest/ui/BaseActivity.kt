@@ -11,10 +11,9 @@ abstract class BaseActivity(
     @LayoutRes contentLayoutId: Int = 0,
 ) : AppCompatActivity(contentLayoutId) {
 
-    private var toolbar: Toolbar? = null
+    protected var toolbar: Toolbar? = null
 
-    @Suppress("MemberVisibilityCanBePrivate")
-    protected fun setupToolbar(@IdRes id: Int? = null, displayHomeAsUp: Boolean = true) {
+    open fun setupToolbar(@IdRes id: Int? = null, displayHomeAsUp: Boolean = true) {
         toolbar = findViewById(id ?: R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(displayHomeAsUp)

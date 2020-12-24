@@ -48,7 +48,6 @@ class BeerDetailsFragment : BaseFragment() {
 
         viewModel.beerDetail.observe { data ->
             binding.apply {
-                image.loadImage(data.imageUrl)
                 name.text = data.name
                 abv.text = Format.DECIMAL_PERCENT.format(data.abv)
                 ibu.text =  Format.DECIMAL.format(data.ibu)

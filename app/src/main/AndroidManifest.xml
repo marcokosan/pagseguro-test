@@ -24,8 +24,7 @@
 
         <activity android:name="com.marcokosan.pagsegurotest.ui.home.HomeActivity" />
 
-        <activity android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsActivity"
-            android:label="@string/title_beer_datails" />
+        <activity android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsActivity" />
 
     </application>
 

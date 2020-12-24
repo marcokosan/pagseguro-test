@@ -17,9 +17,9 @@
     <string name="home_beer_image_content_description">Imagem da cerveja</string>
 
     <!-- Beer Detail -->
-    <string name="detail_abv">Teor alcoólico:</string>
-    <string name="detail_ibu">Escala de amargor:</string>
-    <string name="detail_tagline">Slogan:</string>
-    <string name="detail_description">Descrição:</string>
+    <string name="detail_abv">Teor alcoólico</string>
+    <string name="detail_ibu">Escala de amargor</string>
+    <string name="detail_tagline">Slogan</string>
+    <string name="detail_description">Descrição</string>
 
 </resources>
