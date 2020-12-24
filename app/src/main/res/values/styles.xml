@@ -11,7 +11,7 @@
         <item name="cornerRadius">28dp</item>
     </style>
 
-    <!-- Widget -->
+    <!-- Beer Detail -->
 
     <style name="DetailPrimaryLabel">
         <item name="android:textSize">12sp</item>
