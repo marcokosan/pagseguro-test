@@ -34,7 +34,7 @@ class HomeTest {
 
         onView(
             CoreMatchers.allOf(
-                withId(R.id.name),
+                withId(R.id.beer_name),
                 withText(TestData.FAKE_BEER_NAME)
             )
         ).check(matches(isDisplayed()))
@@ -44,8 +44,8 @@ class HomeTest {
     fun clickOnFirstItem_detailsShown() {
         onView(withId(R.id.beers)).perform(actionOnItemAtPosition<HomeViewHolder>(0, click()))
 
-        onView(withId(R.id.image)).check(matches(isDisplayed()))
-        onView(withId(R.id.name)).check(matches(isDisplayed()))
+        onView(withId(R.id.beer_image)).check(matches(isDisplayed()))
+        onView(withId(R.id.beer_name)).check(matches(isDisplayed()))
         onView(withId(R.id.abv)).check(matches(isDisplayed()))
     }
 }

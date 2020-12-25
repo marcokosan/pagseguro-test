@@ -1,7 +1,7 @@
 package com.marcokosan.pagsegurotest.ui.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.marcokosan.pagsegurotest.data.TestData.beerList
+import com.marcokosan.pagsegurotest.data.TestData.BEER_LIST
 import com.marcokosan.pagsegurotest.factory.RepositoryFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -37,7 +37,7 @@ class HomeViewModelTest {
     @Test
     fun fetchBeers_loaded() = runBlockingTest {
         createViewModel().let {
-            assertEquals(beerList, it.beers.value)
+            assertEquals(BEER_LIST, it.beers.value)
             assertEquals(false, it.loading.value)
         }
     }

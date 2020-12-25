@@ -1,6 +1,6 @@
 package com.marcokosan.pagsegurotest.response
 
-import com.marcokosan.pagsegurotest.data.TestData.beerResponse
+import com.marcokosan.pagsegurotest.data.TestData.BEER_RESPONSE
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -8,7 +8,7 @@ class ResponseTest {
 
     @Test
     fun beerResponse_to_Beer() {
-        val beer = beerResponse.toBeer()
+        val beer = BEER_RESPONSE.toBeer()
 
         assertEquals(1L, beer.id)
         assertEquals("Name Test", beer.name)

@@ -1,7 +1,7 @@
 package com.marcokosan.pagsegurotest.ui.beerdetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.marcokosan.pagsegurotest.data.TestData.beer
+import com.marcokosan.pagsegurotest.data.TestData.BEER
 import com.marcokosan.pagsegurotest.factory.RepositoryFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -39,7 +39,7 @@ class BeerDetailsViewModelTest {
         createViewModel().let {
             it.loadBeer()
 
-            assertEquals(beer, it.beerDetail.value)
+            assertEquals(BEER, it.beerDetail.value)
             assertEquals(false, it.loading.value)
         }
     }

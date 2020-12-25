@@ -3,7 +3,6 @@
     <string name="app_name">Teste PagSeguro</string>
 
     <string name="title_home">@string/app_name</string>
-    <string name="title_beer_datails">Detalhes</string>
 
     <string name="close">Fechar</string>
     <string name="dismiss">Dispensar</string>

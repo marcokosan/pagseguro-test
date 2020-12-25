@@ -6,18 +6,19 @@ object TestData {
 
     const val FAKE_BEER_ID = 1L
     const val FAKE_BEER_NAME = "Fake beer name"
+    const val FAKE_BEER_TAGLINE = "Tagline Test"
 
-    val beerResponse = BeerResponse(
+    val BEER_RESPONSE = BeerResponse(
         id = FAKE_BEER_ID,
         name = FAKE_BEER_NAME,
         imageUrl = "image_url_test",
         abv = 12.34F,
         ibu = 23.45F,
-        tagline = "Tagline Test",
+        tagline = FAKE_BEER_TAGLINE,
         description = "Description Test",
     )
 
-    val beer = beerResponse.toBeer()
+    val BEER = BEER_RESPONSE.toBeer()
 
-    val beerList = listOf(beer)
+    val BEER_LIST = listOf(BEER)
 }

@@ -1,6 +1,5 @@
 package com.marcokosan.pagsegurotest.ui
 
-import android.widget.TextView
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -22,20 +21,23 @@ class BeerDetailsTest {
     val rule = ActivityScenarioRule<BeerDetailsActivity>(
         BeerDetailsActivity.starterIntent(
             ApplicationProvider.getApplicationContext(),
-            TestData.FAKE_BEER_ID
+            TestData.BEER
         )
     )
 
     @Test
     fun basicViewsDisplayed() {
-        onView(CoreMatchers.allOf(CoreMatchers.instanceOf(TextView::class.java),
-            withParent(withId(R.id.toolbar))))
-            .check(matches(withText(R.string.title_beer_datails)))
+        onView(
+            CoreMatchers.allOf(
+                withId(R.id.beer_name),
+                withText(TestData.FAKE_BEER_NAME)
+            )
+        ).check(matches(isDisplayed()))
 
         onView(
             CoreMatchers.allOf(
-                withId(R.id.name),
-                withText(TestData.FAKE_BEER_NAME)
+                withId(R.id.tagline),
+                withText(TestData.FAKE_BEER_TAGLINE)
             )
         ).check(matches(isDisplayed()))
     }
