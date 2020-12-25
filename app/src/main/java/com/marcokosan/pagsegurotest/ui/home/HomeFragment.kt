@@ -43,7 +43,10 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setupView() {
-        binding.beers.adapter = adapter
+        binding.beers.apply {
+            setHasFixedSize(true)
+            adapter = this@HomeFragment.adapter
+        }
     }
 
     private fun setupObservers() {
@@ -52,7 +55,7 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.loading.observe { isLoading ->
-            if (isLoading) {
+            if (isLoading && adapter.isEmpty) {
                 binding.loading.show()
             } else {
                 binding.loading.hide()
@@ -60,7 +63,7 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.beers.observe {
-            adapter.setList(it)
+            adapter.setPage(it)
         }
     }
 

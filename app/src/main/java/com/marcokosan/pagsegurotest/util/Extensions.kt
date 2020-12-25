@@ -13,7 +13,6 @@ import com.marcokosan.pagsegurotest.R
 
 fun ImageView.loadImage(
     model: Any?,
-    @DrawableRes placeholder: Int = R.drawable.placeholder,
     listener: (() -> Unit)? = null
 ) {
     val requestListener = object : RequestListener<Drawable> {
@@ -35,7 +34,7 @@ fun ImageView.loadImage(
 
     Glide.with(context)
         .load(model)
-        .placeholder(placeholder)
+        .error(R.drawable.ic_missing_image)
         .dontTransform()
         .listener(requestListener)
         .into(this)

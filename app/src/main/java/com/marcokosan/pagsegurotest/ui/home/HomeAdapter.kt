@@ -2,53 +2,98 @@ package com.marcokosan.pagsegurotest.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.marcokosan.pagsegurotest.R
 import com.marcokosan.pagsegurotest.databinding.BeerItemBinding
+import com.marcokosan.pagsegurotest.databinding.ListItemPlaceholderBinding
 import com.marcokosan.pagsegurotest.model.Beer
 import com.marcokosan.pagsegurotest.util.Format
 import com.marcokosan.pagsegurotest.util.loadImage
-import com.marcokosan.pagsegurotest.util.setSupportTransitionName
 
 class HomeAdapter(
     private val onNextPage: () -> Unit,
     private val onItemClick: (beer: Beer, sharedViewTransition: BeerItemBinding) -> Unit
-) : ListAdapter<Beer, HomeViewHolder>(ItemDiffCallback()) {
+) : ListAdapter<Any, RecyclerView.ViewHolder>(ItemDiffCallback()) {
 
     private var data: List<Beer> = emptyList()
+    private var hasNextPage = false
 
-    fun setList(list: List<Beer>) {
-        data = list
-        submitList(list)
+    val isEmpty: Boolean
+        get() = data.isEmpty()
+
+    fun setPage(page: BeerPage) {
+        data = page.list
+        if (hasNextPage && !page.hasNextPage) {
+            notifyItemRemoved(data.size)
+        }
+        hasNextPage = page.hasNextPage
+        submitList(ArrayList(data) as List<Any>?)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+    override fun getItemCount(): Int {
+        return if (hasNextPage) data.size + 1 else data.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == data.size) TYPE_PLACEHOLDER else TYPE_ITEM
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = BeerItemBinding.inflate(inflater, parent, false)
 
-        view.root.apply {
-            setOnClickListener {
-                onItemClick.invoke(tag as Beer, view)
+        return when (viewType) {
+            TYPE_PLACEHOLDER -> {
+                val view = ListItemPlaceholderBinding.inflate(inflater, parent, false)
+                PlaceholderViewHolder(view)
             }
+            TYPE_ITEM -> {
+                val view = BeerItemBinding.inflate(inflater, parent, false)
+                view.root.apply {
+                    setOnClickListener {
+                        onItemClick.invoke(tag as Beer, view)
+                    }
+                }
+                HomeViewHolder(view)
+            }
+            else -> throw AssertionError("Unknown view type")
         }
-        return HomeViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is PlaceholderViewHolder -> {
+                holder.bind(hasNextPage)
+                onNextPage.invoke()
+            }
+            is HomeViewHolder -> holder.bind(data[position])
+        }
     }
 
-    private class ItemDiffCallback : DiffUtil.ItemCallback<Beer>() {
+    private class PlaceholderViewHolder(
+        binding: ListItemPlaceholderBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-        override fun areItemsTheSame(oldItem: Beer, newItem: Beer): Boolean {
-            return oldItem.id == newItem.id
+        fun bind(visible: Boolean) {
+            itemView.isVisible = visible
+        }
+    }
+
+    private class ItemDiffCallback : DiffUtil.ItemCallback<Any>() {
+
+        override fun areItemsTheSame(oldItem: Any, newItem: Any): Boolean {
+            return (oldItem as? Beer)?.id == (newItem as? Beer)?.id
         }
 
-        override fun areContentsTheSame(oldItem: Beer, newItem: Beer): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(oldItem: Any, newItem: Any): Boolean {
+            return (oldItem as? Beer) == (newItem as? Beer)
         }
+    }
+
+    companion object {
+        private const val TYPE_PLACEHOLDER = 1
+        private const val TYPE_ITEM = 2
     }
 }
 
