@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="lollipop">
+
+    <changeBounds />
+    <changeTransform />
+    <changeImageTransform />
+    <changeClipBounds />
+
+    <transition class="com.marcokosan.pagsegurotest.util.TextSizeTransition">
+        <targets>
+            <target android:targetId="@id/beer_name" />
+        </targets>
+    </transition>
+
+</transitionSet>

@@ -5,14 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.marcokosan.pagsegurotest.R
 import com.marcokosan.pagsegurotest.databinding.BeerItemBinding
 import com.marcokosan.pagsegurotest.model.Beer
 import com.marcokosan.pagsegurotest.util.Format
 import com.marcokosan.pagsegurotest.util.loadImage
+import com.marcokosan.pagsegurotest.util.setSupportTransitionName
 
 class HomeAdapter(
     private val onNextPage: () -> Unit,
-    private val onItemClick: (id: Long) -> Unit
+    private val onItemClick: (beer: Beer, sharedViewTransition: BeerItemBinding) -> Unit
 ) : ListAdapter<Beer, HomeViewHolder>(ItemDiffCallback()) {
 
     private var data: List<Beer> = emptyList()
@@ -28,7 +30,7 @@ class HomeAdapter(
 
         view.root.apply {
             setOnClickListener {
-                onItemClick.invoke(tag as Long)
+                onItemClick.invoke(tag as Beer, view)
             }
         }
         return HomeViewHolder(view)
@@ -55,10 +57,10 @@ class HomeViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(beer: Beer) {
-        binding.root.tag = beer.id
+        binding.root.tag = beer
 
         binding.image.loadImage(beer.imageUrl)
-        binding.name.text = beer.name
+        binding.beerName.text = beer.name
         binding.abv.text = Format.DECIMAL_PERCENT.format(beer.abv)
     }
 }

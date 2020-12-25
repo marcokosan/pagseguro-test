@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import com.marcokosan.pagsegurotest.R
 import com.marcokosan.pagsegurotest.databinding.FragmentBeerDetailsBinding
 import com.marcokosan.pagsegurotest.ui.BaseFragment
 import com.marcokosan.pagsegurotest.util.Format
-import com.marcokosan.pagsegurotest.util.loadImage
-import com.marcokosan.pagsegurotest.util.showErrorDialog
+import com.marcokosan.pagsegurotest.util.setSupportTransitionName
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class BeerDetailsFragment : BaseFragment() {
@@ -30,13 +30,6 @@ class BeerDetailsFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        viewModel.failure.observe {
-            context?.showErrorDialog(
-                failure = it,
-                tryAgainButtonListener = { viewModel.loadBeer() }
-            )
-        }
-
         viewModel.loading.observe { isLoading ->
             if (isLoading) {
                 binding.content.isVisible = false
@@ -48,9 +41,12 @@ class BeerDetailsFragment : BaseFragment() {
 
         viewModel.beerDetail.observe { data ->
             binding.apply {
-                name.text = data.name
+                beerName.apply {
+                    setSupportTransitionName(getString(R.string.transition_beer_name, data.id))
+                    text = data.name
+                }
                 abv.text = Format.DECIMAL_PERCENT.format(data.abv)
-                ibu.text =  Format.DECIMAL.format(data.ibu)
+                ibu.text = Format.DECIMAL.format(data.ibu)
                 tagline.text = data.tagline
                 description.text = data.description
 

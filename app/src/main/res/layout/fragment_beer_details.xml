@@ -19,14 +19,16 @@
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@id/beer_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:transitionName="@string/transition_beer_name"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="[name]" />
+                tools:text="[name]"
+                tools:targetApi="lollipop" />
 
             <TextView
                 android:id="@+id/abv_label"
@@ -36,7 +38,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/detail_abv"
                 app:layout_constraintStart_toStartOf="@+id/description"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
+                app:layout_constraintTop_toBottomOf="@id/beer_name" />
 
             <TextView
                 android:id="@+id/abv"
@@ -55,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_ibu"
                 app:layout_constrainedWidth="true"
-                app:layout_constraintEnd_toEndOf="@+id/name"
+                app:layout_constraintEnd_toEndOf="@id/beer_name"
                 app:layout_constraintStart_toEndOf="@+id/abv_label"
                 app:layout_constraintTop_toTopOf="@+id/abv_label" />
 

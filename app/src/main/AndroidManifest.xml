@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="com.marcokosan.pagsegurotest.ui.LauncherActivity"
-            android:theme="@style/AppTheme.Launcher">
+            android:theme="@style/AppTheme.Launcher"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +25,8 @@
 
         <activity android:name="com.marcokosan.pagsegurotest.ui.home.HomeActivity" />
 
-        <activity android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsActivity" />
+        <activity android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsActivity"
+            android:theme="@style/AppTheme.BeerDetails"/>
 
     </application>
 

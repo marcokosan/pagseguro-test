@@ -8,20 +8,22 @@
     android:clipChildren="false"
     tools:context=".ui.home.HomeActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/container"
+    <fragment
+        android:id="@+id/fragment"
         android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsFragment"
         android:clipChildren="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:targetApi="lollipop" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/image_detail_backgound"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        tools:targetApi="lollipop">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

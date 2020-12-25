@@ -1,5 +1,9 @@
 package com.marcokosan.pagsegurotest.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Beer(
     val id: Long,
     val name: String,
@@ -8,5 +12,5 @@ data class Beer(
     val ibu: Float,
     val tagline: String?,
     val description: String?,
-)
+) : Parcelable
 

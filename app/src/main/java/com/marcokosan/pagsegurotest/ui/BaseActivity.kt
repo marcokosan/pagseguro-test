@@ -11,7 +11,7 @@ abstract class BaseActivity(
     @LayoutRes contentLayoutId: Int = 0,
 ) : AppCompatActivity(contentLayoutId) {
 
-    protected var toolbar: Toolbar? = null
+    var toolbar: Toolbar? = null
 
     open fun setupToolbar(@IdRes id: Int? = null, displayHomeAsUp: Boolean = true) {
         toolbar = findViewById(id ?: R.id.toolbar)
@@ -25,5 +25,9 @@ abstract class BaseActivity(
             true
         }
         else -> super.onOptionsItemSelected(item)
+    }
+
+    fun requireToolbar(): Toolbar {
+        return toolbar ?: throw AssertionError("")
     }
 }

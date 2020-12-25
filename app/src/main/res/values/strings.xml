@@ -22,4 +22,9 @@
     <string name="detail_tagline">Slogan</string>
     <string name="detail_description">Descrição</string>
 
+    <!-- Transitions -->
+    <string name="transition_toolbar">toolbar</string>
+    <string name="transition_beer_image">beer_image_%d</string>
+    <string name="transition_beer_name">beer_name_%d</string>
+
 </resources>

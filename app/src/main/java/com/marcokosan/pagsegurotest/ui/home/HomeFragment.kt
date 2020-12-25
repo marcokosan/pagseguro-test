@@ -19,7 +19,14 @@ class HomeFragment : BaseFragment() {
 
     private val adapter = HomeAdapter(
         onNextPage = { viewModel.fetchBeers() },
-        onItemClick = { BeerDetailsActivity.launch(requireContext(), it) }
+        onItemClick = { id, sharedViewTransition ->
+            BeerDetailsActivity.launch(
+                requireActivity(),
+                id,
+                baseActivity.requireToolbar(),
+                sharedViewTransition
+            )
+        }
     )
 
     override fun onCreateView(
