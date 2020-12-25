@@ -13,7 +13,7 @@
         android:transitionName="@string/transition_toolbar"
         tools:targetApi="lollipop" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="com.marcokosan.pagsegurotest.ui.home.HomeFragment"
         android:layout_width="match_parent"

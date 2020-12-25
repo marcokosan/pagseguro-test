@@ -37,7 +37,7 @@ class HomeViewModelTest {
     @Test
     fun fetchBeers_loaded() = runBlockingTest {
         createViewModel().let {
-            assertEquals(BEER_LIST, it.beers.value)
+            assertEquals(BEER_LIST, it.beers.value?.list)
             assertEquals(false, it.loading.value)
         }
     }

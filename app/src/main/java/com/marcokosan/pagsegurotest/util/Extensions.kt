@@ -3,7 +3,6 @@ package com.marcokosan.pagsegurotest.util
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
-import androidx.annotation.DrawableRes
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException

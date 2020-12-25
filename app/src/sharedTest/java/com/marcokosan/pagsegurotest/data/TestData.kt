@@ -2,6 +2,7 @@ package com.marcokosan.pagsegurotest.data
 
 import com.marcokosan.pagsegurotest.provider.data.response.BeerResponse
 
+@Suppress("MemberVisibilityCanBePrivate")
 object TestData {
 
     const val FAKE_BEER_ID = 1L

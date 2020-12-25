@@ -2,9 +2,7 @@ package com.marcokosan.pagsegurotest.ui.beerdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.marcokosan.pagsegurotest.archframework.Result
 import com.marcokosan.pagsegurotest.model.Beer
-import com.marcokosan.pagsegurotest.provider.data.source.BeerRepository
 import com.marcokosan.pagsegurotest.ui.BaseViewModel
 
 class BeerDetailsViewModel : BaseViewModel() {

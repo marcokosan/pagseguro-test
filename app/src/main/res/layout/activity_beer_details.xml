@@ -8,7 +8,7 @@
     android:clipChildren="false"
     tools:context=".ui.home.HomeActivity">
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="com.marcokosan.pagsegurotest.ui.beerdetails.BeerDetailsFragment"
         android:clipChildren="false"

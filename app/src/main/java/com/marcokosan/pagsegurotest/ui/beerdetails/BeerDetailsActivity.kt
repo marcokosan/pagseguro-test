@@ -68,11 +68,13 @@ class BeerDetailsActivity : BaseActivity(R.layout.activity_beer_details) {
                 val intent = starterIntent(this, beer)
 
                 val imageTransitionName = getString(R.string.transition_beer_image, beer.id)
+                val nameTransitionName = getString(R.string.transition_beer_name, beer.id)
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     activity,
                     Pair(toolbar, getString(R.string.transition_toolbar)),
                     Pair(sharedViewTransition.image, imageTransitionName),
+                    Pair(sharedViewTransition.beerName, nameTransitionName),
                 )
 
                 startActivity(intent, options.toBundle())

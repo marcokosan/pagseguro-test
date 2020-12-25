@@ -14,12 +14,12 @@ class BeerPage {
         private set
 
     fun addPage(data: List<Beer>) {
-        if (data.isEmpty()) {
-            hasNextPage = false
+        hasNextPage = if (data.isEmpty()) {
+            false
         } else {
             _list.addAll(data)
             currentPage++
-            hasNextPage = true
+            true
         }
     }
 }
