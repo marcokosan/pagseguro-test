@@ -9,12 +9,12 @@ selecionado.
 ### Home (Beers list)
 Essa tela exibe todas as cervejas disponibilizadas no repositório remoto.
 
-<img src="./docs/imgs/screen_home.png" width="600"/>
+<img src="./docs/imgs/screen_home.jpg" width="600"/>
 
 ### Beer details)
 Essa tela exibe os detalhes da cerveja seleciona na lista.
 
-<img src="./docs/imgs/screen_beer_details.png" width="600"/>
+<img src="./docs/imgs/screen_beer_details.jpg" width="600"/>
 
 ## Arquitetura
 * MVVM
