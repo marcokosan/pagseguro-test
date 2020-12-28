@@ -35,5 +35,3 @@ View Binding
 * Timber (https://github.com/JakeWharton/timber) - para facilitar exibição de logs;
 * JUnit e Mockito (https://github.com/mockito/mockito) -  para teste unitário;
 * Espresso (https://developer.android.com/training/testing/espresso) - para testes básicos de UI;
-
-## Bibliotecas
